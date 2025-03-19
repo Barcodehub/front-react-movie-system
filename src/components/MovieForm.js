@@ -20,35 +20,56 @@ const MovieForm = ({ movie, onSave }) => {
   };
 
   return (
-    <form
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      onSubmit={handleSubmit}
-      className="p-4 bg-white rounded-lg shadow-lg"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-r from-gray-900 to-gray-800 p-4"
     >
-      <h2 className="text-xl font-bold mb-4">{movie ? 'Editar Película' : 'Crear Película'}</h2>
-      <div className="mb-4">
-        <label className="block text-gray-700">Título</label>
-        <input
-          type="text"
-          value={formData.title}
-          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          className="w-full p-2 border rounded"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700">Descripción</label>
-        <textarea
-          value={formData.description}
-          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-          className="w-full p-2 border rounded"
-        />
-      </div>
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded">
-        Guardar
-      </button>
-    </form>
+      <motion.form
+        onSubmit={handleSubmit}
+        className="w-full max-w-2xl bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-xl shadow-2xl p-8 border border-gray-700"
+      >
+        <h2 className="text-3xl font-bold mb-8 text-blue-400 text-center">
+          {movie ? 'Editar Película' : 'Crear Película'}
+        </h2>
+        <div className="space-y-6">
+          {/* Campo Título */}
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Título</label>
+            <input
+              type="text"
+              value={formData.title}
+              onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Título de la película"
+            />
+          </div>
+
+          {/* Campo Descripción */}
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Descripción</label>
+            <textarea
+              value={formData.description}
+              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              rows="4"
+              placeholder="Descripción de la película"
+            />
+          </div>
+
+          {/* Botón Guardar */}
+          <div className="flex justify-end">
+            <button
+              type="submit"
+              className="bg-blue-600 text-white font-semibold py-3 px-8 rounded-full hover:bg-blue-700 transition-colors duration-300 shadow-lg"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </motion.form>
+    </motion.div>
   );
 };
 

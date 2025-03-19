@@ -45,18 +45,27 @@ export const deleteShowtime = async (id) => {
 };
 
 // Reservas
+// Crear una reserva
 export const createReservation = async (reservationData) => {
   const response = await axios.post(`${API_URL}/reservations`, reservationData);
   return response.data;
 };
 
+// Obtener reservas del usuario
 export const getUserReservations = async () => {
   const response = await axios.get(`${API_URL}/reservations/user`);
   return response.data;
 };
 
+// Cancelar una reserva
 export const cancelReservation = async (id) => {
   const response = await axios.delete(`${API_URL}/reservations/${id}`);
+  return response.data;
+};
+
+// Obtener todas las reservas (solo para admin)
+export const getAllReservations = async () => {
+  const response = await axios.get(`${API_URL}/reservations/all`);
   return response.data;
 };
 

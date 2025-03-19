@@ -31,6 +31,13 @@ const Navbar = () => {
             >
               Reservas
             </Link>
+
+            <Link
+              to='/reservations/create/${showtimeId}'
+              className="text-gray-300 hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300"
+            >
+              Reservas2
+            </Link>
             <Link
               to="/login"
               className="text-gray-300 hover:text-red-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300"
